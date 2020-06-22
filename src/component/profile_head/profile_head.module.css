@@ -1,0 +1,17 @@
+.profile_head {
+    grid-area: profile_head;
+    background-color: brown; 
+    border-radius: 20px;
+  }
+
+ .profilePicture {
+ 	margin: 50px auto 0px auto;
+ 	width: 200px;
+ 	height: 200px;
+ 	border-radius: 50%;
+ }
+ .profilePicture img {
+width: 200px;
+ 	height: 200px;
+ 	border-radius: 50%;
+ 	 }

@@ -1,0 +1,9 @@
+.head{
+    grid-area: head;
+    background-color: rgb(255, 0, 212);
+  
+  }
+
+  .login{
+  	float: right;
+  }

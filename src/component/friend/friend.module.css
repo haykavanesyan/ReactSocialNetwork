@@ -1,0 +1,10 @@
+.friend {
+    grid-area: friend;
+    background-color: black;
+    
+  }
+
+  .text {
+      color: white;
+  }
+

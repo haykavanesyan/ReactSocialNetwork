@@ -1,0 +1,32 @@
+.app {
+  display: grid;
+  margin: 0 auto;
+
+  grid-template-areas:
+  "head head head"
+  "nav content friend";
+
+  grid-template-rows: 80px 100%;
+  grid-template-columns: 0.8fr 10fr 0.8fr;
+ 
+}
+
+.content {
+  grid-area: content;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
