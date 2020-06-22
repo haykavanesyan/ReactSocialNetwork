@@ -7,7 +7,7 @@ const Head = (props) => {
     return (
     	
         <div className={h.head}>
-            <p>Head</p>
+            <p><NavLink to="/">HEAD</NavLink></p>
 
                <div className={h.login}>
            {props.userData.log ? props.userData.login : <NavLink to="/login">login</NavLink>}
