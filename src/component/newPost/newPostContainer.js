@@ -12,7 +12,7 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
 	return ({
-		addPost: () => { dispatch({type: "ADD_POST"})},
+		addPost: (value) => { dispatch({type: "ADD_POST", value})},
 		textValue: (post) => {dispatch({type: "TEXT_VALUES", text: post})}
 
 	})

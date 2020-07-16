@@ -10,12 +10,11 @@ import {Redirect} from 'react-router-dom'
 
 
 const Profile = (props) => {
-	debugger
-	/*if(props.log === false) return <Redirect to={"/login"}/>*/
+	
 
     return (
         <div className={p.profile}>
-            <Profile_head profileInfo={props.profileInfo}/>
+            <Profile_head profileInfo={props.profileInfo} userData={props.userData} status={props.status}/>
             <Profile_nav/>
             <NewPostContainer />
 

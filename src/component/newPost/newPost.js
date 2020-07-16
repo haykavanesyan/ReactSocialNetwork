@@ -1,7 +1,7 @@
 import React from 'react'
 import n from './newPost.module.css'
 import Posts from "./posts/posts";
-
+import {reduxForm, Field} from 'redux-form'
 
 
 
@@ -10,8 +10,8 @@ const NewPost = (props) => {
     let postsElement = props.profile.posts.map( cikl => <Posts post={cikl.post} like={cikl.like} />)
 
     
-    let send = () =>{
-     props.addPost()
+    let send = (value) =>{
+     props.addPost(value.new_post)
 }
 
 let textChanger = (e) => {
@@ -21,11 +21,7 @@ let textChanger = (e) => {
     return (
         <div className={n.newPost}>
             <div>
-                <input value={props.profile.textValue} onChange={textChanger}/>
-                <div className={n.button}>
-                    <button onClick={send} >Post</button>
-
-                </div>
+                <PostFormRedux onSubmit={send}/>
             </div>
             <div>
                 {postsElement}
@@ -35,5 +31,17 @@ let textChanger = (e) => {
 
 
 };
+
+const PostForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <Field component="input" name="new_post"/>
+                <div className={n.button}>
+                <button>Post</button>
+
+        </div>
+    </form>
+}
+
+const PostFormRedux = reduxForm({form: "AddNewPost"})(PostForm)
 
 export default NewPost;

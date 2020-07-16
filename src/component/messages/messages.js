@@ -4,7 +4,8 @@ import Friends from "./friends/friends";
 import Chat from "./friends/chat";
 import {addMessage,changeMessage} from '../../state.js'
 import {Redirect} from 'react-router-dom'
-
+import {reduxForm, Field} from 'redux-form'
+import {textarea} from '../login/element'
 
 
 const Messages = (props) => {
@@ -13,8 +14,8 @@ const Messages = (props) => {
     let chatElement = props.messages.chatData.map( cikl => <Chat message={cikl.message}/>);
 
     
-    let addMessager = () => {
-        props.addMessage()
+    let addMessager = (value) => {
+        props.addMessage(value.new_message)
     }
 
 let onChanger = (e) =>{
@@ -23,7 +24,6 @@ let onChanger = (e) =>{
 }
 
 
-    /*if(props.log === false) return <Redirect to={"/login"}/>*/
 
     return (
         <div className={m.messages}>
@@ -35,13 +35,24 @@ let onChanger = (e) =>{
                 {chatElement}
                 </div>
                 <div className={m.send}>
-                <textarea value={props.messages.messageValue} onChange={onChanger} ></textarea>
-                <button onClick={addMessager}>Send</button>
+                    <MessageFormRedux onSubmit={addMessager} />
                 </div>
                </div>
         </div>
     )
 };
+
+const MessageForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <Field component={textarea} name="new_message" placeholder="Write your message"/>
+                <div className={m.button}>
+                <button>Senc</button>
+
+        </div>
+    </form>
+}
+
+const MessageFormRedux = reduxForm({form: "AddNewMessage"})(MessageForm)
 
 
 export default Messages;

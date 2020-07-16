@@ -4,6 +4,7 @@ import {messageReducer} from "./messageReducer"
 import {usersReducer} from "./usersReducer"
 import {loginReducer} from "./loginReducer"
 import thunk from 'redux-thunk';
+import {reducer as formReducer} from 'redux-form'
 
 
 let reducers = combineReducers({
@@ -11,6 +12,7 @@ let reducers = combineReducers({
 	messages: messageReducer,
 	usersPage: usersReducer,
 	userData: loginReducer,
+	form: formReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunk))

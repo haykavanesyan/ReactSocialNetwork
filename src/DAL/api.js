@@ -18,7 +18,7 @@ export let getUsers = (e=1, c=20) => {
 
 
 export let logIn = () => {
-	
+	debugger
 	return instance.get(`auth/me`).then(res => {
 		return res.data
 	})
@@ -49,3 +49,31 @@ export let profileInformation = (id) => {
           return res.data
     })
 }
+
+
+export let getStatus = (id) => {
+	
+	return instance.get(`profile/status/${id}`)
+	
+}
+
+export let changeStatus = (statuss) => {
+	
+	return instance.put(`profile/status`,{status: statuss})
+	
+}
+
+
+export let login = (email, password, rememberMe) => {
+
+	return instance.post('auth/login', {email: email, password: password, rememberMe: rememberMe})
+}
+
+
+export let logout = () => {
+
+	return instance.delete('auth/login')
+}
+
+
+

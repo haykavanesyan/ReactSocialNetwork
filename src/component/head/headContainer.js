@@ -2,7 +2,7 @@ import React from 'react'
 import Head from './head'
 import {connect} from 'react-redux'
 import * as axios from 'axios'
-import {addData, log, logInThunk} from '../../redux/loginReducer'
+import {addData, log, logInThunk, logoutThunk} from '../../redux/loginReducer'
 
 
 class HeadContainer extends React.Component{
@@ -28,4 +28,4 @@ let mapStateToProps=(state)=>{
 
 
 
-export default connect(mapStateToProps, {addData, log, logInThunk})(HeadContainer)
+export default connect(mapStateToProps, {addData, log, logInThunk, logoutThunk})(HeadContainer)

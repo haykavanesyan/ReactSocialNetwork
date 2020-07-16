@@ -12,7 +12,7 @@ let Users = (props) =>{
   props.users.map((e) => {
           return (
                <div className={s.block}>
-               <NavLink to={'/profile/'+e.id}><div className={s.ava}><img src={e.photos.small}/></div></NavLink>
+               <NavLink to={'/profile/'+e.id}><div className={s.ava}><img src={e.photos.large}/></div></NavLink>
                <div>
                {e.name}
                </div>

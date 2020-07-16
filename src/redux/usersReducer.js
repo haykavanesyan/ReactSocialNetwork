@@ -10,7 +10,7 @@ let stateDefault = {
     buttonDisable: [],
 
 }
-
+ 
 export let usersReducer = (state = stateDefault, action) => {
 
 	switch(action.type){

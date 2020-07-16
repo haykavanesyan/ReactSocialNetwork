@@ -20,8 +20,8 @@ export let messageReducer = (state = stater, action) => {
 
             return {
               ...state,
-              chatData: [...state.chatData, {message: state.messageValue}],
-              messageValue: ""
+              chatData: [...state.chatData, {message: action.value}],
+             
             }
          case "MESSAGE_VALUE":
              return {

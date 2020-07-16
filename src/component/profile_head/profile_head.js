@@ -1,6 +1,6 @@
 import React from 'react';
 import p from './profile_head.module.css';
-
+import Status from './status'
 
 
 const Profile_head = (props) => {
@@ -12,6 +12,7 @@ const Profile_head = (props) => {
           <div className={p.profilePicture}>
            <img src={props.profileInfo.photos.large} />
            </div>
+           <Status userData={props.userData} status={props.status} profileInfo={props.profileInfo}/>
        </div>
     );
 }
