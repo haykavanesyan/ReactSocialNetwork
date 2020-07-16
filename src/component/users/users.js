@@ -2,6 +2,7 @@ import React from 'react'
 import s from './users.module.css'
 import {NavLink} from "react-router-dom"
 import * as axios from 'axios'
+import profile from '../../gif/profile.svg'
 
 
 let Users = (props) =>{
@@ -12,7 +13,7 @@ let Users = (props) =>{
   props.users.map((e) => {
           return (
                <div className={s.block}>
-               <NavLink to={'/profile/'+e.id}><div className={s.ava}><img src={e.photos.large}/></div></NavLink>
+               <NavLink to={'/profile/'+e.id}><div className={s.ava}><img src={!e.photos.large ? profile : e.photos.large}/></div></NavLink>
                <div>
                {e.name}
                </div>

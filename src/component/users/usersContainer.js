@@ -3,12 +3,21 @@ import Users from './users'
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Pagination from "react-js-pagination";
+import ReactPaginate from 'react-paginate';
 import gif from '../../gif/200.gif'
 import {getUsers} from '../../DAL/api'
+import style from './users.module.css'
 import {getUsersThunk,  follow, unfollow, setUsers, pageChanger, waitChange, button, FollowThunk, unFollowThunk} from '../../redux/usersReducer'
 
 
 class UsersAPI extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 1
+    };
+  }
 
     componentDidMount(){
            this.props.getUsersThunk()
@@ -17,6 +26,7 @@ class UsersAPI extends React.Component {
 
 pageChanger = (e) => {
 	     this.props.getUsersThunk(e)
+       this.setState({activePage: e});
       
 }
 
@@ -25,13 +35,21 @@ pageChanger = (e) => {
 render() {
           
  return <div>
+ <div className={style.pagination}>
+<Pagination
 
- <Pagination
-          activePage={this.props.activePage}
-          totalItemsCount={450}
-          pageRangeDisplayed={5}
+          hideFirstLastPages
+          activePage={this.state.activePage}
+          totalItemsCount={5000}
+          itemsCountPerPage={20}
+          pageRangeDisplayed={10}
           onChange={this.pageChanger}
+          prevPageText={'Prev'}
+          nextPageText={'Next'}
+
+
         />
+        </div>
            {this.props.wait ? <img src={gif}/> : 
         
         <Users users={this.props.users}

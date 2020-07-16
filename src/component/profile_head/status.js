@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getStatus,changeStatus} from '../../DAL/api'
+import style from './profile_head.module.css'
 
 class Status extends React.Component {
 
@@ -33,8 +34,8 @@ class Status extends React.Component {
 debugger
 		return (
 
-			<div>
-             {this.state.bool ? <span onClick={this.props.userData.id === this.props.profileInfo.userId?this.disableMode:null}> {this.props.status} </span> : 
+			<div className={style.statusDiv}>
+             {this.state.bool ? <span className={style.status} onClick={this.props.userData.id === this.props.profileInfo.userId?this.disableMode:null}> {this.props.status} </span> : 
              	<input onBlur={this.activateMode} value={this.state.value} onChange={this.change}/> }
              	</div>
 

@@ -15,7 +15,6 @@
 .ava img{
 	width: 100px;
 	height: 100px;
-	
 	border-radius: 50%;
 	
 }
@@ -30,4 +29,13 @@ li {
 
 .disable{
 	display: none;
+}
+
+
+.pagination {
+	text-align: right;
+}
+
+.pagination li.active {
+	color: red;
 }
