@@ -8,12 +8,23 @@ import MessagesContainer from './component/messages/messagesContainer'
 import UsersContainer from './component/users/usersContainer'
 import {Route} from "react-router-dom";
 import Login from './component/login/login'
+import {connect} from 'react-redux'
+import gif from './gif/200.gif'
+import {initializatingThunk} from './redux/loginReducer'
 
-const App = (props) => {
 
-    return (
-        
-            <div className='app'>
+
+class App extends React.Component{
+
+    componentDidMount(){
+        this.props.initializatingThunk()
+    }
+
+render(){
+    
+   return <div>{this.props.initialization ?
+
+    <div className='app'>
                 <HeadContainer/>
                 <Nav/>
                 <div className='content'>
@@ -23,12 +34,24 @@ const App = (props) => {
                     <Route path='/login' render={() => <Login /> }/>
                     
                 </div>
-                <Friend store={props.store}/>
+                <Friend/>
             </div>
-       );
+
+            :
+
+        <img src={gif}/>
+    
+       }
+       </div>
+
+}
 
 };
 
 
+let mapStateToProps = (state) => ({
+    initialization: state.userData.initialization
+})
 
-export default App;
+
+export default connect(mapStateToProps, {initializatingThunk})(App);

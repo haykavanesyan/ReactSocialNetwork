@@ -1,6 +1,7 @@
 import {logIn, login, logout} from '../DAL/api'
 
 
+
 let stateDefault = {
 	id: null,
 	email: null,
@@ -8,6 +9,7 @@ let stateDefault = {
 	log: false,
    error: '',
    resultCode: null,
+   initialization: false
 }
 
 
@@ -31,6 +33,11 @@ export let loginReducer = (state = stateDefault, action) =>{
                error: action.error,
                resultCode: action.resultCode
             }
+            case "INITIAL":
+            return {
+               ...state,
+               initialization: true
+             }
          		
          	default:
          		return state
@@ -40,13 +47,15 @@ export let loginReducer = (state = stateDefault, action) =>{
 
  export let  addData = (data) =>{return {type: "ADD_DATA", data: data}}
  export let  log = (b) =>{return {type: "LOG", b}}
- export let  logining = (error, resultCode) => {return {tyle: "LOGIN", error, resultCode}}
+ export let  logining = (error, resultCode) => {return {type: "LOGIN", error, resultCode}}
+ export let initializating = () => {return {type: "INITIAL"}}
 
 
 
-export let logInThunk = () =>{
-   return (dispatch) => {
-      logIn().then(data => {
+
+ 
+export let logInThunk = () => (dispatch) => {
+    return  logIn().then(data => {
             
             dispatch(addData(data.data))
             if(data.resultCode === 0){
@@ -55,7 +64,23 @@ export let logInThunk = () =>{
             
     })
    }
-}
+
+
+export let initializatingThunk = () => (dispatch) => {
+
+        logIn().then(data => {
+            
+            dispatch(addData(data.data))
+            if(data.resultCode === 0){
+                  dispatch(log(true))
+            }
+            dispatch(initializating())
+            
+    })
+
+      
+   }
+
 
 export let loginThunk = (email, password, rememberMe) =>{
    

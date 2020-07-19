@@ -6,12 +6,6 @@ import {addData, log, logInThunk, logoutThunk} from '../../redux/loginReducer'
 
 
 class HeadContainer extends React.Component{
-	componentDidMount(){
-           
-          this.props.logInThunk()
-            
-  
-	}
 
 render(){
 	return <Head {...this.props} />
@@ -28,4 +22,4 @@ let mapStateToProps=(state)=>{
 
 
 
-export default connect(mapStateToProps, {addData, log, logInThunk, logoutThunk})(HeadContainer)
+export default connect(mapStateToProps, {addData, log, logoutThunk})(HeadContainer)

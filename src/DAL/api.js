@@ -18,7 +18,7 @@ export let getUsers = (e=1, c=20) => {
 
 
 export let logIn = () => {
-	debugger
+	
 	return instance.get(`auth/me`).then(res => {
 		return res.data
 	})

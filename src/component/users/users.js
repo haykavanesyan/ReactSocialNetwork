@@ -2,7 +2,7 @@ import React from 'react'
 import s from './users.module.css'
 import {NavLink} from "react-router-dom"
 import * as axios from 'axios'
-import profile from '../../gif/profile.svg'
+import profile from '../../gif/profile.png'
 
 
 let Users = (props) =>{

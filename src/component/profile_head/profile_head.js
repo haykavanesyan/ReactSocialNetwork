@@ -1,7 +1,7 @@
 import React from 'react';
 import p from './profile_head.module.css';
 import Status from './status'
-import profile from '../../gif/profile.svg'
+import profile from '../../gif/profile.png'
 
 
 const Profile_head = (props) => {
