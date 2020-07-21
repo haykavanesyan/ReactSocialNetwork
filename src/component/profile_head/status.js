@@ -1,51 +1,35 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {getStatus,changeStatus} from '../../DAL/api'
 import style from './profile_head.module.css'
 
-class Status extends React.Component {
+let Status = (props) =>{
 
-    state = {
-    	bool: true,
-        value: this.props.status
-    }
+
+    let [boolState, boolStateChange] = useState(true)
+    let [valueState, valueStateChange] = useState(props.status)
     
-    change = (e) => {
+    let change = (e) => {
         changeStatus(e.target.value)
-    	this.setState({
-    		value: e.target.value
-    	}) 
-        
-    	
+    	valueStateChange(e.target.value)  	
     }
 
-    activateMode = () => {
-    	this.setState({
-    		bool: true
-    	})
+   let  activateMode = () => {
+    	boolStateChange(true)
     }
-    disableMode = () => {
-    	this.setState({
-    		bool: false
-    	})
+   let disableMode = () => {
+    	boolStateChange(false)
     }
-
-	render() {
-debugger
 		return (
 
 			<div className={style.statusDiv}>
-             {this.state.bool ? <span className={style.status} onClick={this.props.userData.id === this.props.profileInfo.userId?this.disableMode:null}> {this.props.status} </span> : 
-             	<input onBlur={this.activateMode} value={this.state.value} onChange={this.change}/> }
+             {boolState ? <span className={style.status} onClick={props.userData.id === props.profileInfo.userId?disableMode:null}> {valueState.length > 0 ? valueState : props.status} </span> : 
+             	<input onBlur={activateMode} value={valueState.length > 0 ? valueState : props.status} onChange={change}/> }
              	</div>
 
 			)
 	}
           
-
-        
-		
-}
 
 
 
