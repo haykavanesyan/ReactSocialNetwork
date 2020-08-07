@@ -34,7 +34,6 @@ render(){
                     <Route path='/login' render={() => <Login /> }/>
                     
                 </div>
-                <Friend/>
             </div>
 
             :

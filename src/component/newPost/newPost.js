@@ -36,7 +36,7 @@ const PostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <Field component="input" name="new_post"/>
                 <div className={n.button}>
-                <button>Post</button>
+                <button>New Post</button>
 
         </div>
     </form>

@@ -64,9 +64,9 @@ export let changeStatus = (statuss) => {
 }
 
 
-export let login = (email, password, rememberMe) => {
+export let login = (email, password, rememberMe, captcha) => {
 
-	return instance.post('auth/login', {email: email, password: password, rememberMe: rememberMe})
+	return instance.post('auth/login', {email: email, password: password, rememberMe: rememberMe, captcha: captcha})
 }
 
 
@@ -76,4 +76,6 @@ export let logout = () => {
 }
 
 
-
+export let captchaAPI = () => {
+	return instance.get(`security/get-captcha-url`)
+}

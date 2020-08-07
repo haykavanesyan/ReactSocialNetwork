@@ -1,34 +1,33 @@
 .profile_head {
-    grid-area: profile_head;
-    background-color: brown; 
+    width: 20%;
     border-radius: 20px;
+    float: left;
   }
 
  .profilePicture {
- 	margin: 50px auto 0px auto;
+ 
  	width: 200px;
  	height: 200px;
  	border-radius: 50%;
+
  }
  .profilePicture img {
 width: 200px;
  	height: 200px;
  	border-radius: 50%;
+ 	margin-bottom: 20px;
  	 }
 
  	 .status {
- 	 	padding: 0px 20px 0px 20px;
+
+ 	    padding: 0px 5px 0px 5px;
  	 	border:2px solid black;
  	 	border-radius: 10px;
 
  	 }
 
- 	 .statusDiv {
- 	 	margin-top: 60px;
- 	 	margin-right: 20px;
- 	 	text-align: right;
- 	 }
+
 
  	 .name{
- 	 	text-align: center;
+ 	 	text-align: left;
  	 }

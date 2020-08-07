@@ -1,9 +1,18 @@
 .head{
     grid-area: head;
-    background-color: rgb(255, 0, 212);
-  
+    background-color: lightblue;
+   padding-top: 15px;
   }
 
   .login{
   	float: right;
+   
+    margin-right: 5px;
+   padding-right: 5px;
+  
+  }
+  .head a{
+  	color: black;
+  	margin-left: 10px;
+  	font-size: 20px;
   }

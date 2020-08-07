@@ -1,4 +1,4 @@
-import {logIn, login, logout} from '../DAL/api'
+import {logIn, login, logout, captchaAPI} from '../DAL/api'
 
 
 
@@ -9,7 +9,9 @@ let stateDefault = {
 	log: false,
    error: '',
    resultCode: null,
-   initialization: false
+   initialization: false,
+   captcha: null
+
 }
 
 
@@ -38,6 +40,11 @@ export let loginReducer = (state = stateDefault, action) =>{
                ...state,
                initialization: true
              }
+             case "GET_CAPTCHA":
+             return{
+              ...state,
+              captcha: action.url
+             }
          		
          	default:
          		return state
@@ -49,6 +56,9 @@ export let loginReducer = (state = stateDefault, action) =>{
  export let  log = (b) =>{return {type: "LOG", b}}
  export let  logining = (error, resultCode) => {return {type: "LOGIN", error, resultCode}}
  export let initializating = () => {return {type: "INITIAL"}}
+ export let getCaptcha = (url) => {return {type: "GET_CAPTCHA", url}}
+
+
 
 
 
@@ -82,21 +92,26 @@ export let initializatingThunk = () => (dispatch) => {
    }
 
 
-export let loginThunk = (email, password, rememberMe) =>{
-   
-   return(dispatch) => login(email, password, rememberMe).then(res => {
+export let loginThunk = (email, password, rememberMe, captcha) =>{
+  debugger
+   return(dispatch) => login(email, password, rememberMe, captcha).then(res => {
          
          if(res.data.resultCode === 0){
            logIn().then(data => {
-            
             dispatch(addData(data.data))
             if(data.resultCode === 0){
                   dispatch(log(true))
             }
+
             
     })
          }
-      
+      else if(res.data.resultCode === 10){
+        captchaAPI().then(res =>{
+        dispatch(getCaptcha(res.data.url))
+        })
+      }
+      console.log(res)
       })
    
    

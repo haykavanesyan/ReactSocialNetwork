@@ -1,14 +1,7 @@
 .profile {
-    display: grid;
     grid-gap: 20px;
     width: 90%;
     margin: 50px auto 0px auto;
-  
-    grid-template-areas:
-    "profile_head profile_head profile_head"
-    "profile_nav profile_nav profile_nav"
-    "newPost newPost newPost";
-  
-    grid-template-rows: 350px 100px 100%;
+
     
   }

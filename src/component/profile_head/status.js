@@ -23,7 +23,7 @@ let Status = (props) =>{
 		return (
 
 			<div className={style.statusDiv}>
-             {boolState ? <span className={style.status} onClick={props.userData.id === props.profileInfo.userId?disableMode:null}> {valueState.length > 0 ? valueState : props.status} </span> : 
+             {boolState ? <i className={style.status} onClick={props.userData.id === props.profileInfo.userId?disableMode:null}> {!!valueState && valueState.length > 0 ? valueState : props.status} </i> : 
              	<input onBlur={activateMode} value={valueState.length > 0 ? valueState : props.status} onChange={change}/> }
              	</div>
 

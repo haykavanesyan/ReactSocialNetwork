@@ -1,3 +1,39 @@
 .error {
 	border:solid red 3px;
 }
+
+.form {
+	width: 500px;
+	height: 500px;
+	margin:100px auto;
+
+}
+
+.login{
+	width: 500px;
+	height: 30px;
+	text-align: center;
+	border: solid 1px black;
+	border-radius: 50px;
+	margin-bottom: 20px;
+}
+
+.password{
+	width: 500px;
+	height: 30px;
+	text-align: center;
+	border: solid 1px black;
+	border-radius: 50px;
+	margin-bottom: 20px;
+
+}
+
+.button{
+    cursor: pointer;
+	float: right;
+	width: 100px;
+	height: 30px;
+	background: none;
+	border: solid 1px black;
+	border-radius: 50px;
+}

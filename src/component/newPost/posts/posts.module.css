@@ -9,7 +9,16 @@
     border-radius: 30px;
 }
 
-.posts p {
-   text-align: right;
-   margin-right: 10px;
+.posts span{
+  margin-right: 80px;
+}
+
+.like{
+  text-align: left;
+}
+.comment{
+  text-align: center;
+}
+.share{
+  text-align: right;
 }

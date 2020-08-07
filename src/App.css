@@ -3,12 +3,12 @@
   margin: 0 auto;
 
   grid-template-areas:
-  "head head head"
-  "nav content friend";
+  "head head"
+  "nav content";
 
-  grid-template-rows: 80px 100%;
-  grid-template-columns: 0.8fr 10fr 0.8fr;
- 
+  grid-template-rows: 60px 100%;
+  grid-template-columns: 100px 10fr;
+
 }
 
 .content {
