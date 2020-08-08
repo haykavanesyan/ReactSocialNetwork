@@ -7,7 +7,7 @@ let stateDefault = {
 	email: null,
 	login: null,
 	log: false,
-   error: '',
+   err: '',
    resultCode: null,
    initialization: false,
    captcha: null
@@ -29,11 +29,10 @@ export let loginReducer = (state = stateDefault, action) =>{
             	...state,
             	log: action.b
             }
-            case "LOGIN":
+            case "ERROR":
             return {
                ...state,
-               error: action.error,
-               resultCode: action.resultCode
+               err: action.err,
             }
             case "INITIAL":
             return {
@@ -54,7 +53,7 @@ export let loginReducer = (state = stateDefault, action) =>{
 
  export let  addData = (data) =>{return {type: "ADD_DATA", data: data}}
  export let  log = (b) =>{return {type: "LOG", b}}
- export let  logining = (error, resultCode) => {return {type: "LOGIN", error, resultCode}}
+ export let  error = (err) => {return {type: "ERROR", err}}
  export let initializating = () => {return {type: "INITIAL"}}
  export let getCaptcha = (url) => {return {type: "GET_CAPTCHA", url}}
 
@@ -93,7 +92,6 @@ export let initializatingThunk = () => (dispatch) => {
 
 
 export let loginThunk = (email, password, rememberMe, captcha) =>{
-  debugger
    return(dispatch) => login(email, password, rememberMe, captcha).then(res => {
          
          if(res.data.resultCode === 0){
@@ -106,12 +104,16 @@ export let loginThunk = (email, password, rememberMe, captcha) =>{
             
     })
          }
+         else if(res.data.resultCode === 1){
+          dispatch(error(res.data.messages[0]))
+         }
       else if(res.data.resultCode === 10){
+        
         captchaAPI().then(res =>{
         dispatch(getCaptcha(res.data.url))
         })
       }
-      console.log(res)
+      console.log()
       })
    
    
